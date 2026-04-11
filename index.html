@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wayne Dev | Gotham Noir Tech</title>
+  <meta name="description" content="Wayne Dev diseña y desarrolla páginas web elegantes, oscuras y precisas para negocios que necesitan una presencia digital poderosa." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="logo.png">
+  <style>
+    :root {
+      --bg: #060708;
+      --bg-soft: #0d0f12;
+      --panel: rgba(14, 16, 19, 0.92);
+      --panel-2: rgba(20, 23, 28, 0.92);
+      --text: #f3f0e8;
+      --muted: #b7b0a3;
+      --line: rgba(176, 141, 87, 0.18);
+      --line-strong: rgba(176, 141, 87, 0.35);
+      --gold: #b08d57;
+      --gold-soft: #8d6f45;
+      --steel: #1b1f24;
+      --shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+      --shadow-strong: 0 22px 60px rgba(0, 0, 0, 0.6);
+      --max: 1140px;
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: "Inter", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(176, 141, 87, 0.08), transparent 24%),
+        linear-gradient(180deg, #050607 0%, #090b0e 35%, #0d1014 100%);
+      line-height: 1.55;
+      letter-spacing: 0.01em;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.95));
+      opacity: 0.22;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(var(--max), calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(6, 7, 8, 0.76);
+      border-bottom: 1px solid rgba(176, 141, 87, 0.12);
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: "Cinzel", serif;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 1.04rem;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--line-strong);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(180deg, rgba(176, 141, 87, 0.1), rgba(176, 141, 87, 0.03));
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+      color: var(--gold);
+      font-size: 0.9rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.94rem;
+      transition: color 0.2s ease, opacity 0.2s ease;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 20px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: linear-gradient(180deg, rgba(176, 141, 87, 0.18), rgba(176, 141, 87, 0.08));
+      border-color: rgba(176, 141, 87, 0.3);
+      color: var(--text);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+    }
+
+    .btn-primary:hover {
+      border-color: rgba(176, 141, 87, 0.48);
+      background: linear-gradient(180deg, rgba(176, 141, 87, 0.25), rgba(176, 141, 87, 0.1));
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.02);
+      border-color: rgba(255,255,255,0.08);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(176, 141, 87, 0.28);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .hero {
+      padding: 92px 0 56px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(176, 141, 87, 0.18);
+      background: rgba(176, 141, 87, 0.06);
+      color: #d0b385;
+      font-size: 0.84rem;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+    }
+
+    h1, .section-title {
+      font-family: "Cinzel", serif;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: clamp(2.5rem, 6vw, 4.8rem);
+      line-height: 0.98;
+      max-width: 11ch;
+    }
+
+    .hero-highlight {
+      color: var(--gold);
+      display: block;
+    }
+
+    .lead {
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: 1.02rem;
+      margin-bottom: 26px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .hero-points {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .hero-points span::before {
+      content: "◆";
+      color: var(--gold);
+      margin-right: 8px;
+      font-size: 0.8rem;
+    }
+
+    .panel, .card, .project-card, .stat, .contact-card, .quote {
+      position: relative;
+      background: linear-gradient(180deg, rgba(15,17,20,0.96), rgba(11,13,16,0.96));
+      border: 1px solid rgba(176, 141, 87, 0.12);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .panel::before, .card::before, .project-card::before, .stat::before, .contact-card::before, .quote::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(135deg, rgba(176,141,87,0.08), transparent 30%, transparent 70%, rgba(176,141,87,0.04));
+      opacity: 0.8;
+    }
+
+    .panel:hover, .card:hover, .project-card:hover, .stat:hover, .contact-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(176, 141, 87, 0.24);
+      box-shadow: var(--shadow-strong);
+    }
+
+    .panel, .contact-card, .quote { padding: 28px; }
+    .card, .project-card, .stat { padding: 24px; }
+
+    .panel h3, .contact-card h3, .quote h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-family: "Cinzel", serif;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 1.08rem;
+    }
+
+    .panel-intro, .contact-card p, .quote p {
+      margin: 0 0 16px;
+      color: var(--muted);
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .mini-item {
+      padding: 13px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      color: var(--muted);
+    }
+
+    section { padding: 36px 0; }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      margin: 0 0 8px;
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .section-title::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.2em;
+      bottom: 0.2em;
+      width: 3px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--gold), transparent);
+    }
+
+    .section-text {
+      margin: 0;
+      max-width: 70ch;
+      color: var(--muted);
+    }
+
+    .stats, .cards, .projects, .contact-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .stats { grid-template-columns: repeat(3, 1fr); }
+    .cards { grid-template-columns: repeat(3, 1fr); }
+    .projects { grid-template-columns: repeat(2, 1fr); }
+    .contact-grid { grid-template-columns: 1.08fr 0.92fr; align-items: start; }
+
+    .stat-title, .card h3, .project-card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-family: "Cinzel", serif;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 1.02rem;
+    }
+
+    .stat p, .card p, .project-card p { margin: 0; color: var(--muted); }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      margin-bottom: 14px;
+      border: 1px solid rgba(176, 141, 87, 0.18);
+      color: var(--gold);
+      background: rgba(176, 141, 87, 0.05);
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+
+    .project-tag, .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(176, 141, 87, 0.08);
+      border: 1px solid rgba(176, 141, 87, 0.12);
+      color: #d1b98d;
+      font-size: 0.83rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .project-tag { margin-bottom: 14px; }
+
+    .pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .quote {
+      background: linear-gradient(135deg, rgba(176, 141, 87, 0.08), rgba(255,255,255,0.02));
+      border-color: rgba(176, 141, 87, 0.18);
+    }
+
+    .quote strong { color: var(--text); }
+
+    .cta {
+      margin: 34px 0 10px;
+      border: 1px solid rgba(176, 141, 87, 0.2);
+      border-radius: 28px;
+      padding: 32px;
+      background:
+        linear-gradient(135deg, rgba(176,141,87,0.12), rgba(176,141,87,0.03)),
+        linear-gradient(180deg, rgba(12,14,17,0.95), rgba(8,9,11,0.95));
+      box-shadow: var(--shadow-strong);
+    }
+
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 18px;
+    }
+
+    footer {
+      padding: 34px 0 46px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-align: center;
+      border-top: 1px solid rgba(176, 141, 87, 0.08);
+      margin-top: 14px;
+    }
+
+    .footer-mark {
+      font-family: "Cinzel", serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid, .stats, .cards, .projects, .contact-grid, .cta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        padding: 12px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      h1 { max-width: none; }
+      .section-head { display: block; }
+    }
+
+    @media (max-width: 640px) {
+      .hero { padding-top: 68px; }
+      .btn { width: 100%; }
+      .hero-actions { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a href="#inicio" class="brand">
+        <span class="brand-mark">W</span>
+        <span>Wayne Dev</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#servicios">Servicios</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#enfoque">Enfoque</a>
+        <a href="#contacto" class="btn btn-primary">Solicitar propuesta</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Gotham Noir Tech · Diseño con presencia</div>
+          <h1>
+            Presencia digital
+            <span class="hero-highlight">letal y elegante</span>
+          </h1>
+          <p class="lead">
+            Wayne Dev diseña y desarrolla páginas web sobrias, oscuras y precisas para negocios,
+            servicios y marcas personales que necesitan verse más serios, más premium y más memorables.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contacto">Quiero una web</a>
+            <a class="btn btn-secondary" href="#proyectos">Ver proyectos</a>
+          </div>
+
+          <div class="hero-points">
+            <span>Diseño sobrio</span>
+            <span>Código limpio</span>
+            <span>Impacto visual</span>
+          </div>
+        </div>
+
+        <aside class="panel">
+          <h3>Lo que construyo</h3>
+          <p class="panel-intro">
+            Webs pensadas para ordenar tu propuesta, elevar tu imagen y convertir una visita en una conversación real.
+          </p>
+          <div class="mini-list">
+            <div class="mini-item">Landing pages premium para servicios y negocios</div>
+            <div class="mini-item">Sitios informativos con estética oscura y moderna</div>
+            <div class="mini-item">Integración a WhatsApp con flujo simple y directo</div>
+            <div class="mini-item">Experiencia responsive para celular, tablet y escritorio</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="stats">
+          <article class="stat">
+            <h3 class="stat-title">Menos ruido</h3>
+            <p>Diseño limpio, controlado y sin saturación visual para que el mensaje tenga más fuerza.</p>
+          </article>
+          <article class="stat">
+            <h3 class="stat-title">Más presencia</h3>
+            <p>Una estética oscura y premium que transmite seriedad, orden y carácter.</p>
+          </article>
+          <article class="stat">
+            <h3 class="stat-title">Más contacto</h3>
+            <p>Secciones pensadas para explicar mejor lo que haces y llevar directo a la acción.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">Servicios</h2>
+            <p class="section-text">
+              Soluciones web para negocios y proyectos que quieren verse mejor, transmitir confianza y generar oportunidades reales.
+            </p>
+          </div>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">01</div>
+            <h3>Landing pages</h3>
+            <p>Páginas con estructura estratégica para mostrar servicios, destacar beneficios y facilitar el contacto.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">02</div>
+            <h3>WhatsApp directo</h3>
+            <p>Botones, formularios y recorridos simples para que el cliente llegue directo a escribirte.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">03</div>
+            <h3>Presencia premium</h3>
+            <p>Diseño visual sobrio, oscuro y elegante para marcas que quieren una identidad más potente.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="proyectos">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">Proyecto destacado</h2>
+            <p class="section-text">
+              Un ejemplo real de estructura clara, estética moderna y contacto directo orientado a conversión.
+            </p>
+          </div>
+        </div>
+
+        <div class="projects">
+          <article class="project-card">
+            <div class="project-tag">Proyecto real</div>
+            <h3>Fletes Quillota Express</h3>
+            <p>
+              Landing page creada para un servicio local de fletes, con secciones pensadas para inspirar confianza,
+              explicar rápido el servicio y llevar la cotización directo a WhatsApp.
+            </p>
+            <div class="pill-group">
+              <span class="pill">Landing page</span>
+              <span class="pill">Responsive</span>
+              <span class="pill">WhatsApp</span>
+            </div>
+            <div class="hero-actions" style="margin-top: 20px; margin-bottom: 0;">
+              <a href="https://andreswayne8.github.io/fletes-quillota/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Ver sitio</a>
+              <a href="https://github.com/AndresWayne8" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Ver código</a>
+            </div>
+          </article>
+
+          <aside class="quote">
+            <h3>Filosofía Wayne Dev</h3>
+            <p>
+              <strong>No se trata solo de tener una web.</strong> Se trata de construir una presencia digital que se vea seria,
+              se sienta premium y deje claro que detrás del proyecto hay criterio, orden y precisión.
+            </p>
+            <p style="margin-bottom:0;">
+              Menos ruido. Más impacto.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="enfoque">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">Enfoque</h2>
+            <p class="section-text">
+              Wayne Dev mezcla minimalismo de lujo, noir tecnológico e intención comercial para construir páginas que se sienten distintas.
+            </p>
+          </div>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">A</div>
+            <h3>Orden visual</h3>
+            <p>Jerarquía clara, espacios amplios y una composición que deja respirar el contenido.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">B</div>
+            <h3>Presencia sobria</h3>
+            <p>Oscuridad, contraste y detalles metálicos sutiles para una identidad fuerte sin exceso.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">C</div>
+            <h3>Función real</h3>
+            <p>Cada bloque tiene un propósito: mostrar valor, explicar mejor y empujar el contacto.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="container contact-grid">
+        <div class="contact-card">
+          <h3>Conversemos</h3>
+          <p>
+            Si quieres una web con presencia, estética premium y estructura clara para tu negocio o servicio,
+            escríbeme y vemos una propuesta directa.
+          </p>
+          <div class="hero-actions" style="margin-bottom: 0;">
+            <a class="btn btn-primary" href="https://wa.me/56979304490" target="_blank" rel="noopener noreferrer">Hablar por WhatsApp</a>
+            <a class="btn btn-secondary" href="https://github.com/AndresWayne8" target="_blank" rel="noopener noreferrer">Ver GitHub</a>
+          </div>
+        </div>
+
+        <aside class="panel">
+          <h3>Ideal para</h3>
+          <p class="panel-intro">
+            Este enfoque funciona especialmente bien para quienes necesitan verse más serios, modernos y memorables.
+          </p>
+          <div class="mini-list">
+            <div class="mini-item">Servicios técnicos</div>
+            <div class="mini-item">Negocios locales</div>
+            <div class="mini-item">Marcas personales</div>
+            <div class="mini-item">Emprendimientos premium</div>
+            <div class="mini-item">Proyectos con identidad fuerte</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section>
+      <div class="container cta">
+        <div class="cta-grid">
+          <div>
+            <h2 class="section-title" style="margin-bottom: 8px;">Oscura. Precisa. Memorable.</h2>
+            <p class="section-text" style="margin: 0; max-width: 58ch;">
+              Una web simple puede sentirse poderosa cuando tiene criterio visual, orden y una dirección clara.
+            </p>
+          </div>
+          <a class="btn btn-primary" href="https://wa.me/56979304490" target="_blank" rel="noopener noreferrer">Solicitar propuesta</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-mark">Wayne Dev</div>
+      Diseño y desarrollo web con estética noir, precisión visual y enfoque funcional.<br />
+      <div style="margin-top: 10px; font-size: 0.9rem;">
+        <span style="opacity: 0.7;">Ver trabajo en</span>
+        <a href="https://github.com/AndresWayne8" target="_blank" rel="noopener noreferrer" style="font-weight: 700; color: var(--gold); margin-left: 4px;">
+          GitHub
+        </a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
