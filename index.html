@@ -10,6 +10,148 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" href="logo.png">
   <style>
+    /* ===== PROYECTOS NIVEL EMPRESA ===== */
+.projects-showcase {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 26px;
+}
+
+.project-enterprise {
+  position: relative;
+  padding: 24px;
+  border-radius: 22px;
+  border: 1px solid rgba(176, 141, 87, 0.12);
+  background: linear-gradient(180deg, rgba(14,17,20,0.96), rgba(11,13,16,0.98));
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.project-enterprise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at top, rgba(176,141,87,0.14), transparent 42%),
+    linear-gradient(135deg, rgba(176,141,87,0.05), transparent 30%, transparent 72%, rgba(255,255,255,0.02));
+  opacity: 0.9;
+}
+
+.project-enterprise:hover {
+  transform: translateY(-6px);
+  border-color: rgba(176, 141, 87, 0.28);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.58);
+}
+
+.project-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.project-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(176, 141, 87, 0.08);
+  border: 1px solid rgba(176, 141, 87, 0.14);
+  color: #d1b98d;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.project-number {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  border: 1px solid rgba(176, 141, 87, 0.18);
+  color: var(--gold);
+  background: rgba(176, 141, 87, 0.06);
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+
+.project-enterprise h3 {
+  margin: 0 0 14px;
+  font-family: "Cinzel", serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 1.05rem;
+}
+
+.project-enterprise p {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.project-enterprise p strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.project-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(176, 141, 87, 0.18);
+  background: rgba(255,255,255,0.02);
+  color: var(--text);
+  font-size: 0.88rem;
+  font-weight: 700;
+  transition: all 0.25s ease;
+}
+
+.project-link:hover {
+  border-color: rgba(176, 141, 87, 0.32);
+  background: rgba(255,255,255,0.04);
+}
+
+.project-link.primary {
+  background: linear-gradient(180deg, rgba(176, 141, 87, 0.18), rgba(176, 141, 87, 0.08));
+  border-color: rgba(176, 141, 87, 0.28);
+}
+
+.projects-cta {
+  margin-top: 30px;
+  padding: 24px;
+  border-radius: 22px;
+  border: 1px solid rgba(176, 141, 87, 0.16);
+  background: linear-gradient(135deg, rgba(176,141,87,0.10), rgba(255,255,255,0.02));
+  box-shadow: var(--shadow);
+}
+
+.projects-cta p {
+  margin: 0 0 14px;
+  color: var(--muted);
+}
+
+@media (max-width: 920px) {
+  .projects-showcase {
+    grid-template-columns: 1fr;
+  }
+}
     :root {
       --bg: #060708;
       --bg-soft: #0d0f12;
@@ -449,7 +591,7 @@
       </a>
       <nav class="nav-links">
         <a href="#servicios">Servicios</a>
-        <a href="#proyectos">Proyectos</a>
+        <a href="#proyectos">Casos</a>
         <a href="#enfoque">Enfoque</a>
         <a href="#contacto" class="btn btn-primary">Solicitar propuesta</a>
       </nav>
@@ -460,7 +602,7 @@
     <section class="hero" id="inicio">
       <div class="container hero-grid">
         <div>
-          <div class="eyebrow">Gotham Noir Tech · Diseño con presencia</div>
+          <div class="eyebrow">Diseño web premium · Sistemas visuales para negocios</div>
           <h1>
             Presencia digital
             <span class="hero-highlight">letal y elegante</span>
@@ -548,50 +690,129 @@
         </div>
       </div>
     </section>
-
-    <section id="proyectos">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2 class="section-title">Proyecto destacado</h2>
-            <p class="section-text">
-              Un ejemplo real de estructura clara, estética moderna y contacto directo orientado a conversión.
-            </p>
-          </div>
-        </div>
-
-        <div class="projects">
-          <article class="project-card">
-            <div class="project-tag">Proyecto real</div>
-            <h3>Fletes Quillota Express</h3>
-            <p>
-              Landing page creada para un servicio local de fletes, con secciones pensadas para inspirar confianza,
-              explicar rápido el servicio y llevar la cotización directo a WhatsApp.
-            </p>
-            <div class="pill-group">
-              <span class="pill">Landing page</span>
-              <span class="pill">Responsive</span>
-              <span class="pill">WhatsApp</span>
-            </div>
-            <div class="hero-actions" style="margin-top: 20px; margin-bottom: 0;">
-              <a href="https://andreswayne8.github.io/fletes-quillota/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Ver sitio</a>
-              <a href="https://github.com/AndresWayne8/fletes-quillota/blob/main/index.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Ver código</a>
-            </div>
-          </article>
-
-          <aside class="quote">
-            <h3>Filosofía Wayne Dev</h3>
-            <p>
-              <strong>No se trata solo de tener una web.</strong> Se trata de construir una presencia digital que se vea seria,
-              se sienta premium y deje claro que detrás del proyecto hay criterio, orden y precisión.
-            </p>
-            <p style="margin-bottom:0;">
-              Menos ruido. Más impacto.
-            </p>
-          </aside>
-        </div>
+<section id="proyectos">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">Proyectos</h2>
+        <p class="section-text">
+          Desarrollo soluciones digitales enfocadas en automatización, captación de clientes y optimización de procesos para negocios reales.
+        </p>
       </div>
-    </section>
+    </div>
+
+    <div class="projects-showcase">
+
+      <article class="project-enterprise">
+        <div class="project-head">
+          <span class="project-badge">Proyecto real</span>
+          <div class="project-number">01</div>
+        </div>
+        <h3>Sistema de Cotización Automatizada</h3>
+        <p><strong>Problema:</strong> Procesos de cotización manuales, lentos y poco consistentes para responder a clientes.</p>
+        <p><strong>Solución:</strong> Desarrollo de una landing funcional con formulario inteligente y generación automática de mensajes estructurados para WhatsApp.</p>
+        <p><strong>Resultado:</strong> Mejor velocidad de respuesta, mejor organización comercial y una experiencia más profesional para el cliente final.</p>
+        <p><strong>Tecnologías:</strong> HTML, CSS, JavaScript</p>
+        <div class="project-footer">
+          <a href="https://andreswayne8.github.io/fletes-quillota/" target="_blank" rel="noopener noreferrer" class="project-link primary">Ver proyecto real</a>
+          <a href="https://github.com/AndresWayne8/fletes-quillota/blob/main/index.html" target="_blank" rel="noopener noreferrer" class="project-link">Ver código</a>
+        </div>
+      </article>
+<article class="project-enterprise">
+  <div class="project-head">
+    <span class="project-badge">Sistema SaaS</span>
+    <div class="project-number">02</div>
+  </div>
+
+  <h3>OpsTrack System – Gestión Operativa</h3>
+
+  <p><strong>Problema:</strong> Empresas pequeñas y servicios operan sin control centralizado de pedidos, estados y seguimiento interno.</p>
+
+  <p><strong>Solución:</strong> Desarrollo de un sistema web con gestión de pedidos, control de estados, edición de registros, roles de usuario y trazabilidad de acciones.</p>
+
+  <p><strong>Resultado:</strong> Mayor control operativo, reducción de desorden interno y una base real para escalar a sistemas empresariales.</p>
+
+  <p><strong>Características clave:</strong> Multiusuario, roles (admin, supervisor, operador), historial de cambios por pedido, logs de acciones y persistencia de datos.</p>
+
+  <p><strong>Tecnologías:</strong> HTML, CSS, JavaScript (arquitectura tipo sistema SaaS)</p>
+
+  <div class="project-footer">
+    <a href="https://andreswayne8.github.io/opstrack-system/" target="_blank" rel="noopener noreferrer" class="project-link primary">Ver sistema</a>
+
+    <a href="https://github.com/AndresWayne8/opstrack-system" target="_blank" rel="noopener noreferrer" class="project-link">Ver código</a>
+  </div>
+</article>
+
+      <article class="project-enterprise">
+        <div class="project-head">
+          <span class="project-badge">Demo conceptual</span>
+          <div class="project-number">03</div>
+        </div>
+        <h3>Sistema de Reservas Online</h3>
+        <p><strong>Problema:</strong> Muchos servicios pierden clientes por no contar con una agenda digital clara y fácil de usar.</p>
+        <p><strong>Solución:</strong> Interfaz de reservas con selección de fecha, datos del cliente y estructura orientada a automatizar solicitudes.</p>
+        <p><strong>Resultado:</strong> Menos fricción para el usuario, mejor orden operativo y mayor percepción de profesionalismo.</p>
+        <p><strong>Tecnologías:</strong> HTML, CSS, JavaScript</p>
+        <div class="project-footer">
+          <span class="project-link">Próxima demo visual</span>
+        </div>
+      </article>
+
+      <article class="project-enterprise">
+        <div class="project-head">
+          <span class="project-badge">Caso comercial</span>
+          <div class="project-number">04</div>
+        </div>
+        <h3>Landing Comercial para Captación</h3>
+        <p><strong>Problema:</strong> Negocios con buena oferta, pero sin una presencia digital clara para convertir visitas en contactos.</p>
+        <p><strong>Solución:</strong> Creación de páginas de alta claridad visual, CTA estratégicos y enfoque en contacto directo.</p>
+        <p><strong>Resultado:</strong> Más visibilidad, mejor imagen y una estructura pensada para generar oportunidades reales.</p>
+        <p><strong>Tecnologías:</strong> HTML, CSS, JavaScript</p>
+        <div class="project-footer">
+          <span class="project-link">Aplicable a múltiples rubros</span>
+        </div>
+      </article>
+
+      <article class="project-enterprise">
+        <div class="project-head">
+          <span class="project-badge">Demo conceptual</span>
+          <div class="project-number">05</div>
+        </div>
+        <h3>Sistema de Tracking de Servicios</h3>
+        <p><strong>Problema:</strong> El cliente no sabe en qué estado va su solicitud y eso genera desconfianza y consultas repetidas.</p>
+        <p><strong>Solución:</strong> Interfaz de seguimiento con estados visibles como recibido, en proceso y completado.</p>
+        <p><strong>Resultado:</strong> Más confianza del usuario, mejor comunicación y sensación de empresa más madura.</p>
+        <p><strong>Tecnologías:</strong> HTML, CSS, JavaScript</p>
+        <div class="project-footer">
+          <span class="project-link">Próxima demo visual</span>
+        </div>
+      </article>
+
+      <article class="project-enterprise">
+        <div class="project-head">
+          <span class="project-badge">En desarrollo</span>
+          <div class="project-number">06</div>
+        </div>
+        <h3>Soluciones Web para Negocios Reales</h3>
+        <p><strong>Enfoque:</strong> Desarrollo de interfaces orientadas a resolver problemas concretos de negocio: captación, automatización y presencia digital.</p>
+        <p><strong>Objetivo:</strong> Construir herramientas simples, elegantes y funcionales que ayuden a vender mejor y operar mejor.</p>
+        <p><strong>Valor:</strong> Diseño con criterio, estructura comercial y ejecución técnica enfocada en utilidad real.</p>
+        <p><strong>Tecnologías:</strong> HTML, CSS, JavaScript</p>
+        <div class="project-footer">
+          <a href="#contacto" class="project-link primary">Solicitar propuesta</a>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="projects-cta">
+      <p>
+        Cada proyecto está pensado no solo para verse bien, sino para resolver una necesidad real de negocio con claridad, estructura y enfoque funcional.
+      </p>
+      <a href="#contacto" class="btn btn-primary">Hablemos de tu proyecto</a>
+    </div>
+  </div>
+</section>
 
     <section id="enfoque">
       <div class="container">
